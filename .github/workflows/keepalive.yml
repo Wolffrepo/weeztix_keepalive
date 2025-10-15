@@ -1,0 +1,15 @@
+name: 🌐 Render Keep Alive
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔔 Ping Render Webhook
+        run: |
+          echo "Pinge Render-Webservice an..."
+          curl -s -o /dev/null -w "%{http_code}" https://weeztix-webhook.onrender.com/ || true
